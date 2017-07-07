@@ -1,4 +1,4 @@
-export function cardReducer(state = null,action) {
+export function cardReducer(state = {},action) {
   switch (action.type) {
     case 'CARD_SELECTED':
       return Object.assign({}, state, {
@@ -9,7 +9,8 @@ export function cardReducer(state = null,action) {
   return state;
 }
 
-export function cardContainerReducer(state = null,action) {
+export function cardContainerReducer(state = {},action) {
+  console.log(action.payload)
   switch (action.type) {
     case 'CARD_CONTAINER':
       return Object.assign({},state, {

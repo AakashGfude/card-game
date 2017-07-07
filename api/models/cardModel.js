@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 
 var cardSchema = new Schema({
-  name: {
+  username: {
     type: String,
     Required: 'Kindly enter the name of the person'
   },

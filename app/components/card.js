@@ -7,15 +7,23 @@ class Cards extends Component {
     super(props);
     this.state = {
       value: false,
-      times: 0
+      times: 0,
+      final: 0
     }
   }
   cardClicked() {
     this.setState({ times: this.state.times + 1, value: true});
     return this.state;
   }
-  componentDidUpdate() {
-    console.log(this.props.cardContainer.firstCard);
+  componentWillReceiveProps(newProps) {
+    if (newProps.cardContainer.firstCard !== undefined && newProps.cardContainer.secondCard !== undefined) {
+      if (newProps.cardContainer.firstCard == newProps.cardIndex) {
+        this.setState({final: 'fuck yea'});
+      }
+      if (newProps.cardContainer.secondCard == newProps.cardIndex) {
+        this.setState({final: 'fuck yea'});
+      }
+    }
   }
   render() {
     return (
@@ -33,7 +41,9 @@ class Cards extends Component {
                     <div className="img-back">
                         <div className="back-detail">
                             <p className="back-name">
-                              Byee
+                              {this.state.final?
+                                <img src={require(../../images/fuckYea.jpg)} />
+                              :this.props.cardvalue}
                             </p>
                         </div>
                     </div>

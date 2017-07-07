@@ -15,6 +15,10 @@ exports.create_a_game = function(req, res) {
   new_task.save(function(err, task) {
     if (err)
       res.send(err);
-    res.json(task);
+    var resObj = {
+      status: 200,
+      response: task
+    }
+    res.json(resObj);
   });
 };

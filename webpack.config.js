@@ -25,6 +25,9 @@ module.exports = {
           use: "css-loader!sass-loader",
           publicPath: '/build'
         })
+      },{
+      test: /\.(png|jpg)$/,
+      loader: 'url?limit=10000'
       }]
     },
     resolve: {

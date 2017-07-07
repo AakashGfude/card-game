@@ -1,13 +1,27 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 
+import { fetchUsers } from '../actions/index';
 import ScoreCard from './scoreCard';
 
 class ScoreCardContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userList: null
+    }
+  }
+  componentWillMount() {
+    this.props.fetchUsers();
+  }
+  componentDidUpdate() {
+    console.log('update hoga kya bhai?');
+  }
+  componentWillReceiveProps() {
+    console.log(this.props.userList)
   }
   render() {
+    console.log(this.props.userList)
     return (
       <nav className="panel">
         <p className="panel-heading">
@@ -22,11 +36,12 @@ class ScoreCardContainer extends Component {
           </p>
         </div>
         <div>
-          {this.props.scores.map((score) => {
-            return (
-              <ScoreCard key={score.id} name={score.name} score={score.score}/>
-            )
-          })}
+          { this.props.userList && this.props.userList.data.map((score) => {
+                return (
+                  <ScoreCard key={score._id} name={score.username} score={score.rank}/>
+                )
+            })
+          }
         </div>
       </nav>
     )
@@ -35,8 +50,8 @@ class ScoreCardContainer extends Component {
 
 function mapStatetoProps(state) {
   return {
-    scores: state.scores
+    userList: state.fetchList
   }
 }
 
-export default connect(mapStatetoProps)(ScoreCardContainer);
+export default connect(mapStatetoProps,{fetchUsers})(ScoreCardContainer);
