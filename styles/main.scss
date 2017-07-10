@@ -2,6 +2,12 @@
 @import "./cards.scss";
 @import "./scoreCard.scss";
 
+
+body {
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
 .ta-c {
   text-align: center;
 }
@@ -65,4 +71,76 @@
 
 .hide {
   display: none;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  margin: auto;
+  display: block;
+}
+
+.word.animated {
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+  animation-name: appear;
+  animation-fill-mode: forwards;
+}
+
+.word.animated .word-inner-wrap {
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+  animation-name: wrap-appear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.0001);
+    -webkit-filter: blur(7px);
+  }
+
+  75% {
+  	opacity: 1;
+  	transform: scale(1.5);
+  	-webkit-filter: blur(0px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-filter: blur(0px);
+  }
+}
+
+/* http://stackoverflow.com/questions/19161422/cant-animate-blur-and-transform-together */
+@keyframes wrap-appear {
+  0% {
+    color: rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 100px #fff,
+                 0 0 100px #fff,
+                 0 0 100px #fff,
+                 0 0 100px #fff,
+                 0 0 100px #fff,
+                 0 0 100px #fff,
+                 0 0 100px #fff;
+  }
+
+  75% {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  100% {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+#win-text {
+  margin: auto;
+  display: block;
 }

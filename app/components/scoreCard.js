@@ -19,7 +19,7 @@ export default class ScoreCard extends Component{
             Name: {this.props.name}
           </p>
           <p className="subtitle">
-            Time taken: {this.props.score}s
+            Time taken: {this.props.time?`${this.props.time}s` : 'Did not Complete'}
           </p>
         </div>
       </a>

@@ -25,7 +25,7 @@ class Anim extends Component {
       this.updateUserData(nextProps);
       setTimeout(() => {
         console.log(this.refs, this.refs.word)
-  			this.refs.word.className += 'animated';
+  			this.refs.word.className += ' animated';
   			this.refs.finalCardLayout.classList.remove("hide");
   			this.refs.winText.classList.remove('hide');
   		},1000)
