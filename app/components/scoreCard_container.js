@@ -71,7 +71,7 @@ class ScoreCardContainer extends Component {
         </p>
         <div className="panel-block search-div">
           <p className="control has-icons-left">
-            <input className="input is-small" type="text" placeholder="Search" onChange={this.searchPlayer}/>
+            <input className="input is-small" type="text" placeholder="Search by name" onChange={this.searchPlayer}/>
             <span className="icon is-small is-left">
               <i className="fa fa-search"></i>
             </span>
