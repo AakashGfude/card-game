@@ -28,7 +28,6 @@ class userModal extends Component {
     })
   }
   render() {
-    console.log('does it render?')
     return (
       <div id="userModal" className={this.state.modalClass}>
         <div className="modal-background"></div>

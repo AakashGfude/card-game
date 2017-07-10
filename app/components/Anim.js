@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateUser } from '../actions';
 
 class Anim extends Component {
   constructor(props) {
     super(props);
+    this.updateUserData = this.updateUserData.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.gameComplete.completed) {
+    console.log(this.props.userData);
+    console.log(nextProps,'nextProps')
+    if (nextProps.timerValue && nextProps.timerValue.time && nextProps.gameComplete.completed) {
       let Dot = this.refs.Dot;
       Dot.style.background = 'white' //.css('background','white');
       Dot.style.zIndex = '10';
@@ -18,7 +22,7 @@ class Anim extends Component {
   		}else{
   		  Dot.className += " anim";
   		}
-      console.log(this.refs)
+      this.updateUserData(nextProps);
       setTimeout(() => {
         console.log(this.refs, this.refs.word)
   			this.refs.word.className += 'animated';
@@ -26,6 +30,12 @@ class Anim extends Component {
   			this.refs.winText.classList.remove('hide');
   		},1000)
     }
+  }
+  updateUserData(props) {
+    console.log(props,'this.props')
+    this.props.updateUser(Object.assign({},props.userData.data,{
+      time: props.timerValue.time
+    }))
   }
   componentDidMount() {
     console.log(this.refs)
@@ -55,8 +65,10 @@ class Anim extends Component {
 
 function mapStatetoProps(state) {
   return {
-    gameComplete: state.gameComplete
+    gameComplete: state.gameComplete,
+    userData: state.createUser,
+    timerValue: state.timerValue
   }
 }
 
-export default connect(mapStatetoProps)(Anim)
+export default connect(mapStatetoProps, { updateUser })(Anim)

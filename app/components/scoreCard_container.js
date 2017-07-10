@@ -32,6 +32,7 @@ class ScoreCardContainer extends Component {
     }
   }
   render() {
+    console.log(this.state.characterList);
     return (
       <nav className="panel">
         <p className="panel-heading">
@@ -46,9 +47,9 @@ class ScoreCardContainer extends Component {
           </p>
         </div>
         <div className="user-list">
-          { this.props.userList && this.props.userList.data.map((score) => {
+          { this.state.characterList && this.state.characterList.map((score) => {
                 return (
-                  <ScoreCard key={score._id} name={score.username} score={score.rank} />
+                  <ScoreCard key={score._id} name={score.username} score={score.rank} image={score.image} characterName={score.characterDropdown}/>
                 )
             })
           }

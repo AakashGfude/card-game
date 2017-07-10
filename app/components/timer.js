@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { passTimerValue } from '../actions';
 
 class Timer extends Component {
   constructor(props) {
@@ -11,7 +12,17 @@ class Timer extends Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
-  componentDidUpdate() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.gameComplete.completed) {
+      console.log('game completed?');
+      clearInterval(this.timerID);
+      console.log(this.state.timerValue);
+      this.props.passTimerValue({
+        time: this.state.timerValue
+      })
+    }
+  }
+  componentDidUpdate(newProps) {
     if (this.timerID === undefined) {
       this.timerID = setInterval(()=> this.tick(),1000);
     }
@@ -33,8 +44,9 @@ class Timer extends Component {
 
 function mapStatetoProps(state) {
   return {
-    card: state.card
+    card: state.card,
+    gameComplete: state.gameComplete
   }
 };
 
-export default connect(mapStatetoProps)(Timer);
+export default connect(mapStatetoProps, { passTimerValue })(Timer);

@@ -30,3 +30,21 @@
 .search-div {
   height: 5vh;
 }
+
+.character-pic {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+
+.panel-icon {
+  width: auto;
+  height: auto;
+}
+
+a.panel-block:hover {
+  background-color: inherit;
+  cursor: auto;
+}

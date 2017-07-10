@@ -5,17 +5,21 @@ export default class ScoreCard extends Component{
     super(props);
   }
   render() {
+    let divStyle = {
+      backgroundImage: 'url('+ this.props.image +')'
+    }
+    console.log(divStyle);
     return (
       <a className="panel-block">
         <span className="panel-icon">
-          <i className="fa fa-user-secret"></i>
+          <div className="character-pic" style={divStyle}></div>
         </span>
         <div>
           <p className="title">
             Name: {this.props.name}
           </p>
           <p className="subtitle">
-            Score: {this.props.score}
+            Time taken: {this.props.score}s
           </p>
         </div>
       </a>

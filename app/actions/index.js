@@ -36,12 +36,31 @@ export function fetchUsers() {
 }
 
 export function createUser(values) {
+  console.log(values);
   const request = axios.post(`${ROOT_URL}/cards`,values);
 
   return (dispatch) => {
     request.then((data)=> {
       dispatch({
         type: 'CREATE_USER',
+        payload: data
+      })
+    })
+  }
+}
+
+export function updateUser(values) {
+  let obj = {
+    _id: values._id,
+    time: values.time
+  }
+  console.log(obj)
+  const request = axios.put(`${ROOT_URL}/cards`,obj);
+
+  return (dispatch) => {
+    request.then((data)=> {
+      dispatch({
+        type: 'UPDATE_USER',
         payload: data
       })
     })
@@ -58,5 +77,12 @@ export function callMarvel() {
         payload: data
       })
     })
+  }
+}
+
+export function passTimerValue(obj) {
+  return {
+    type: 'TIMER_VALUE',
+    payload: obj
   }
 }

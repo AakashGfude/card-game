@@ -18,6 +18,17 @@ export function fetchUsersReducer(state = null,action) {
   return state;
 }
 
+export function updateUserReducer(state = null,action) {
+  switch(action.type) {
+    case 'UPDATE_USER' :
+      return Object.assign({},state, {
+        data: action.payload.data
+      })
+  }
+  return state;
+}
+
+
 export function fetchMarvelReducer(state = null,action) {
   switch (action.type) {
     case 'FETCH_MARVEL':
