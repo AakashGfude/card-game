@@ -19,6 +19,9 @@ var cardSchema = new Schema({
   rank: {
     type: Number,
     default: 0
+  },
+  characterDropdown: {
+    type: String
   }
 });
 

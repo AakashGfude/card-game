@@ -26,8 +26,8 @@ module.exports = {
           publicPath: '/build'
         })
       },{
-      test: /\.(png|jpg)$/,
-      loader: 'url?limit=10000'
+        test: /\.(png|jpg|svg)$/,
+        loader: 'url-loader?limit=10000'
       }]
     },
     resolve: {

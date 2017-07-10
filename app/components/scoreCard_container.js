@@ -8,26 +8,36 @@ class ScoreCardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userList: null
+      userList: null,
+      characterList: null
     }
   }
   componentWillMount() {
     this.props.fetchUsers();
   }
   componentDidUpdate() {
-    console.log('update hoga kya bhai?');
   }
-  componentWillReceiveProps() {
-    console.log(this.props.userList)
+  componentWillReceiveProps(newProps) {
+    if (newProps.fetchMarvel && newProps.fetchMarvel.data.length) {
+      this.setState({
+          characterList: newProps.userList.data.map((user) => {
+          for(let value of newProps.fetchMarvel.data) {
+            if (value.name === user.characterDropdown) {
+              user.image = `${value.thumbnail.path}.${value.thumbnail.extension}`
+            }
+          }
+          return user;
+        })
+      })
+    }
   }
   render() {
-    console.log(this.props.userList)
     return (
       <nav className="panel">
         <p className="panel-heading">
           Score Board
         </p>
-        <div className="panel-block">
+        <div className="panel-block search-div">
           <p className="control has-icons-left">
             <input className="input is-small" type="text" placeholder="Search" />
             <span className="icon is-small is-left">
@@ -35,10 +45,10 @@ class ScoreCardContainer extends Component {
             </span>
           </p>
         </div>
-        <div>
+        <div className="user-list">
           { this.props.userList && this.props.userList.data.map((score) => {
                 return (
-                  <ScoreCard key={score._id} name={score.username} score={score.rank}/>
+                  <ScoreCard key={score._id} name={score.username} score={score.rank} />
                 )
             })
           }
@@ -50,7 +60,8 @@ class ScoreCardContainer extends Component {
 
 function mapStatetoProps(state) {
   return {
-    userList: state.fetchList
+    userList: state.fetchList,
+    fetchMarvel: state.fetchMarvel
   }
 }
 

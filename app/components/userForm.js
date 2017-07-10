@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createUser } from '../actions';
+import characterDropdown from './characterDropdown';
 
 class userForm extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class userForm extends Component {
     }
   }
   onFormSubmit(values) {
+    console.log(values);
     this.setState({
       buttonClass: 'button is-primary is-loading'
     })
@@ -46,8 +48,12 @@ class userForm extends Component {
           name="username"
           component={this.renderTitleField}
         />
+        <Field
+          name="characterDropdown"
+          component={characterDropdown}
+        />
         <div className="block">
-          <a className={this.state.buttonClass}   type="submit">Play</a>
+          <button className={this.state.buttonClass}   type="submit">Play</button>
         </div>
       </form>
     )
@@ -58,6 +64,9 @@ function validate(values) {
   const errors = {};
   if (!values.username) {
     errors.username = "Enter a username";
+  }
+  if (!values.characterDropdown) {
+    errors.characterDropdown = "Please select a character";
   }
   return errors;
 }

@@ -7,6 +7,13 @@ export function selectCard(obj) {
   }
 }
 
+export function gameComplete(obj) {
+  return {
+    type: 'GAME_COMPLETE',
+    payload: obj
+  }
+}
+
 export function cardContainerClicked(obj) {
   console.log(obj)
   return {
@@ -35,6 +42,19 @@ export function createUser(values) {
     request.then((data)=> {
       dispatch({
         type: 'CREATE_USER',
+        payload: data
+      })
+    })
+  }
+}
+
+export function callMarvel() {
+  const request = axios.get(`${ROOT_URL}/marvel`);
+
+  return (dispatch) => {
+    request.then((data) => {
+      dispatch({
+        type: 'FETCH_MARVEL',
         payload: data
       })
     })

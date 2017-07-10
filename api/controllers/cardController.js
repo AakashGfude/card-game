@@ -1,6 +1,8 @@
 'use strict';
 var mongoose = require('mongoose'),
   Task = mongoose.model('Cards');
+var api = require('marvel-comics-api');
+
 
 exports.list_all_games = function(req, res) {
   Task.find({}, function(err, task) {
@@ -22,3 +24,19 @@ exports.create_a_game = function(req, res) {
     res.json(resObj);
   });
 };
+
+exports.call_marvel = function(req, res) {
+  // fetch 50 Marvel characters
+  api('characters', {
+    publicKey: '9ec9bd8ca1f31c504076c047bafac705',
+    privateKey: '657b1d20bc1439c03ad5e5b3f0f3bf215f39a418',
+    timeout: 4000,
+    query: {
+      limit: 50,
+      orderBy: 'modified'
+    }
+  }, function (err, body) {
+    if (err) throw err
+    res.json(body.data.results);
+  })
+}

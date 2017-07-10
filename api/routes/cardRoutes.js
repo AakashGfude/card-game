@@ -14,4 +14,7 @@ module.exports = function(app) {
     .get(cardsList.list_all_games)
     .post(cardsList.create_a_game);
 
+  app.route('/marvel')
+    .get(cardsList.call_marvel);
+
 };

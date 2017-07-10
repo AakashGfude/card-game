@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import UserForm from './userForm';
 import { connect } from 'react-redux';
+import { callMarvel } from '../actions/index.js';
 
 class userModal extends Component {
   constructor(props) {
     super(props);
     this.state = { modalClass:'modal is-active' };
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -17,7 +19,16 @@ class userModal extends Component {
       },500)
     }
   }
+  componentWillMount() {
+    this.props.callMarvel();
+  }
+  closeModal() {
+    this.setState({
+      modalClass: 'modal'
+    })
+  }
   render() {
+    console.log('does it render?')
     return (
       <div id="userModal" className={this.state.modalClass}>
         <div className="modal-background"></div>
@@ -26,7 +37,6 @@ class userModal extends Component {
               <UserForm />
             </div>
           </div>
-        <button className="modal-close is-large"></button>
       </div>
     )
   }
@@ -34,8 +44,9 @@ class userModal extends Component {
 
 function mapStatetoProps(state) {
   return {
-    userCreated: state.createUser
+    userCreated: state.createUser,
+    fetchMarvel: state.fetchMarvel
   }
 }
 
-export default connect(mapStatetoProps)(userModal);
+export default connect(mapStatetoProps, { callMarvel })(userModal);

@@ -17,3 +17,13 @@ export function fetchUsersReducer(state = null,action) {
   }
   return state;
 }
+
+export function fetchMarvelReducer(state = null,action) {
+  switch (action.type) {
+    case 'FETCH_MARVEL':
+        return Object.assign({}, state, {
+          data: action.payload.data
+        })
+  }
+  return state;
+}

@@ -2,10 +2,12 @@
   background-color: #556F7A;
   padding: 0px;
   padding-top: 10px;
+  height: 100vh;
 }
 
 .panel-heading {
   background-color: #B79FAD;
+  height: 5vh;
 }
 
 .panel-block {
@@ -18,4 +20,13 @@
   .subtitle {
     display: block;
   }
+}
+
+.user-list {
+  height: 90vh;
+  overflow: auto;
+}
+
+.search-div {
+  height: 5vh;
 }
