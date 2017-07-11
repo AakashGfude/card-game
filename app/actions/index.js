@@ -1,5 +1,5 @@
 import axios from 'axios';
-const ROOT_URL = 'http://localhost:8080';
+const ROOT_URL = 'https://card-game-memory.herokuapp.com/';
 export function selectCard(obj) {
   return {
     type: 'CARD_SELECTED',
