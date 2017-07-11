@@ -4,17 +4,23 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Task = require('./api/models/cardModel'),
   bodyParser = require('body-parser');
+  path = require('path');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://AakashGC:qwerty123@ds147072.mlab.com:47072/cardsgame');
 
-
+app.use(express.static(__dirname + '/build/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.set('views', path.join(__dirname, '/build'));
+app.set('view engine', 'html');
+
 
 var routes = require('./api/routes/cardRoutes');
+var htmlRoutes = require('./api/routes/htmlRoutes');
 routes(app);
+htmlRoutes(app);
 
 app.listen(port);
 
