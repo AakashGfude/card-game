@@ -48,7 +48,7 @@
 }
 
 .fuckYea {
-  background-image: url('../images/fuckYea.jpg');
+  background-image: url('/fuckYea.jpg');
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
@@ -56,4 +56,22 @@
 .img-back, .back-detail, .fuckYea {
   width: 100%;
   height: 100%;
+  background-size: cover;
+}
+
+.back-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 3rem;
+}
+
+.img-cont {
+  background: url('/deadpool.jpg');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
 }

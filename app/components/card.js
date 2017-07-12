@@ -46,7 +46,7 @@ class Cards extends Component {
             flip: false
           })
         }
-      },1000)
+      },700)
 
       // if they match then set the matched property of each card in the pair and call the action creator to update the cards object
       if (newProps.cardContainer.firstCard.value == newProps.cardContainer.secondCard.value &&  (this.props.cardIndex === newProps.cardContainer.firstCard.index || this.props.cardIndex ===  newProps.cardContainer.secondCard.index)) {

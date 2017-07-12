@@ -3,6 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 // var webpack = require('webpack');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 var cleanWebpackPlugin = require('clean-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname,'app','index.js'),
@@ -42,7 +43,10 @@ module.exports = {
       new cleanWebpackPlugin(['build'],{
         root: path.resolve(__dirname),
         verbose: true,
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: 'images' }
+      ])
     ],
     devServer: {
       contentBase: path.resolve(__dirname,'build'),

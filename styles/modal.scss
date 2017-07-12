@@ -6,6 +6,7 @@
 
 .modal-content {
   overflow: visible;
+  width: 700px;
 }
 
 //The good stuff
@@ -16,7 +17,7 @@
   //Tooltip text container
   &::before {
     position: absolute;
-    top: -80px;
+    top: -150px;
     left: -80px;
     background-color: #2B222A;
     border-radius: 5px;
@@ -25,7 +26,7 @@
     padding: 1rem;
     text-transform: none;
     transition: all 0.5s ease;
-    width: 160px;
+    width: 500px;
   }
 
   //Tooltip arrow
@@ -61,5 +62,22 @@
   &:hover::after {
     opacity: 1;
     transition: all 0.75s ease;
+  }
+}
+
+.game-info {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  span {
+    display: block;
+  }
+  img {
+    width: 60px;
+    margin: auto;
+    display: block;
+  }
+  p {
+    color: red;
   }
 }
