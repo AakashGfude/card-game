@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "start": "concurrently \"yarn run webpack\" \"node server.js\""
+    "webpack-dev-server": "webpack-dev-server",
+    "start": "node server.js"
   },
   "repository": "git+https://github.com/AakashGfude/card-game.git",
   "author": "Aakash",

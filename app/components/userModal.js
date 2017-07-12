@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UserForm from './userForm';
 import { connect } from 'react-redux';
 import { callMarvel } from '../actions/index.js';
+const JCimg = require('../../images/Jackie-Chan-WTF.jpg');
 
 class userModal extends Component {
   constructor(props) {
@@ -33,6 +34,13 @@ class userModal extends Component {
         <div className="modal-background"></div>
           <div className="modal-content">
             <div className="box">
+              <h3 className="title is-3" id="fill-details-text">Fill the details to start the game</h3>
+              <div className="game-info">
+                <span className="tooltip-toggle" aria-label="Sample text for your tooltip!" tabindex="0">
+                  <img src={JCimg} />
+                  <p>What is this?</p>
+                </span>
+              </div>
               <UserForm />
             </div>
           </div>
