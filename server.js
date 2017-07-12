@@ -9,11 +9,11 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://AakashGC:qwerty123@ds147072.mlab.com:47072/cardsgame');
 
-app.use(express.static(__dirname + '/build/'));
+app.use(express.static(__dirname + '/build-prod/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.set('views', path.join(__dirname, '/build'));
+app.set('views', path.join(__dirname, '/build-prod'));
 app.set('view engine', 'html');
 
 
