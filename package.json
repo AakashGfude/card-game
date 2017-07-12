@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "yarn",
     "start:server": "node server.js",
     "webpack:build-dev": "webpack --env=dev",
     "webpack:build-prod": "webpack --env=prod",
