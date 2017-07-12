@@ -1,1 +1,1 @@
-web: yarn run webpack && yarn run start
+web: yarn run webpack:build-prod && yarn run start:server

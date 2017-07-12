@@ -1,5 +1,9 @@
 import axios from 'axios';
-const ROOT_URL = 'https://card-game-memory.herokuapp.com';
+let ROOT_URL = 'https://card-game-memory.herokuapp.com';
+if (process.env.NODE_ENV === 'dev') {
+  ROOT_URL = 'http://localhost:8080';
+}
+
 export function selectCard(obj) {
   return {
     type: 'CARD_SELECTED',
@@ -23,6 +27,7 @@ export function cardContainerClicked(obj) {
 }
 
 export function fetchUsers() {
+  console.log(process.env.NODE_ENV);
   const request = axios.get(`${ROOT_URL}/cards`);
 
   return (dispatch) => {

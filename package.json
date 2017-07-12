@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server",
-    "start": "node server.js"
+    "start:server": "node server.js",
+    "webpack:build-dev": "webpack --env=dev",
+    "webpack:build-prod": "webpack --env=prod",
+    "webpack:serve-dev": "webpack-dev-server --env=dev",
+    "webpack:serve-prod": "webpack-dev-server --env=prod"
   },
   "repository": "git+https://github.com/AakashGfude/card-game.git",
   "author": "Aakash",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
     "webpack-dev-server": "^2.5.0"
   }
 }
