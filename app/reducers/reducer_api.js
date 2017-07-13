@@ -1,5 +1,4 @@
 export function createUserReducer(state = null,action) {
-  console.log(action);
   switch(action.type) {
     case 'CREATE_USER' :
       return Object.assign({},state, {

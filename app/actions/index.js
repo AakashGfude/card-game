@@ -26,7 +26,6 @@ export function cardContainerClicked(obj) {
 }
 
 export function continueUser(obj) {
-  console.log(obj);
   return {
     type: 'CONTINUE_USER',
     payload: obj
