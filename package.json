@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/AakashGfude/card-game/issues"
   },
+  "engines" :{
+    "node": "6.10.2"
+  },
   "homepage": "https://github.com/AakashGfude/card-game#readme",
   "dependencies": {
     "axios": "^0.16.2",
@@ -49,8 +52,7 @@
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
-    "optimize-css-assets-webpack-plugin": "^2.0.0",
-    "jquery": "*"
+    "optimize-css-assets-webpack-plugin": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0",
