@@ -35,7 +35,7 @@ class ScoreCardContainer extends Component {
       let fillteredArray = _.sortBy(this.props.userList.data.map((user) => {
           return this.addImageParam(user,this.props);
         }).filter((user) => {
-          if (user.username && user.time && user.username.toLowerCase().indexOf(event.target.value) >= 0) {
+          if (user.username && user.time && user.username.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0) {
             return user;
           }
         }))
