@@ -1,8 +1,13 @@
 export function createUserReducer(state = null,action) {
+  console.log(action);
   switch(action.type) {
     case 'CREATE_USER' :
       return Object.assign({},state, {
         data: action.payload.data.response
+      })
+    case 'CONTINUE_USER':
+      return Object.assign({},state, {
+        data: action.payload
       })
   }
   return state;

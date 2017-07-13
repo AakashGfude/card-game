@@ -19,15 +19,21 @@ export function gameComplete(obj) {
 }
 
 export function cardContainerClicked(obj) {
-  console.log(obj)
   return {
     type: 'CARD_CONTAINER',
     payload: obj
   }
 }
 
+export function continueUser(obj) {
+  console.log(obj);
+  return {
+    type: 'CONTINUE_USER',
+    payload: obj
+  }
+}
+
 export function fetchUsers() {
-  console.log(process.env.NODE_ENV);
   const request = axios.get(`${ROOT_URL}/cards`);
 
   return (dispatch) => {
@@ -41,7 +47,6 @@ export function fetchUsers() {
 }
 
 export function createUser(values) {
-  console.log(values);
   const request = axios.post(`${ROOT_URL}/cards`,values);
 
   return (dispatch) => {
@@ -59,7 +64,6 @@ export function updateUser(values) {
     _id: values._id,
     time: values.time
   }
-  console.log(obj)
   const request = axios.put(`${ROOT_URL}/cards`,obj);
 
   return (dispatch) => {

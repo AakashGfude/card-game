@@ -16,7 +16,7 @@ class characterDropdown extends Component {
         <div className="control is-expanded">
           <div ref="select" className="select is-fullwidth is-loading">
             <select {...input}>
-              <option disabled value="">Select a Marvel Character</option>
+              <option disabled value="">Select a Character</option>
               {
                 this.props.fetchMarvel && this.props.fetchMarvel.data && this.props.fetchMarvel.data.map((data) => {
                   return (

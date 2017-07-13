@@ -5,7 +5,6 @@ import { passTimerValue } from '../actions';
 class Timer extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.card);
     this.state = {timerValue: 0};
     //this.startTimer = this.startTimer.bind(this);
   }
@@ -14,9 +13,7 @@ class Timer extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.gameComplete.completed) {
-      console.log('game completed?');
       clearInterval(this.timerID);
-      console.log(this.state.timerValue);
       this.props.passTimerValue({
         time: this.state.timerValue
       })

@@ -21,7 +21,6 @@ class ScoreCardContainer extends Component {
   componentDidUpdate() {
   }
   addImageParam(user,props) {
-    console.log(props.fetchMarvel)
     for(let value of props.fetchMarvel.data) {
       if (value.name === user.characterDropdown) {
         user.image = `${value.thumbnail.path}.${value.thumbnail.extension}`
@@ -40,7 +39,6 @@ class ScoreCardContainer extends Component {
             return user;
           }
         }))
-        console.log(fillteredArray);
         this.setState({
           characterList: fillteredArray
         })
@@ -63,7 +61,6 @@ class ScoreCardContainer extends Component {
     }
   }
   render() {
-    console.log(this.state.characterList);
     return (
       <nav className="panel">
         <p className="panel-heading">

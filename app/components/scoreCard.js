@@ -8,7 +8,6 @@ export default class ScoreCard extends Component{
     let divStyle = {
       backgroundImage: 'url('+ this.props.image +')'
     }
-    console.log(divStyle);
     return (
       <a className="panel-block">
         <span className="panel-icon">

@@ -8,8 +8,6 @@ class Anim extends Component {
     this.updateUserData = this.updateUserData.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    console.log(this.props.userData);
-    console.log(nextProps,'nextProps')
     if (nextProps.timerValue && nextProps.timerValue.time && nextProps.gameComplete.completed) {
       let Dot = this.refs.Dot;
       Dot.style.background = 'white' //.css('background','white');
@@ -24,7 +22,6 @@ class Anim extends Component {
   		}
       this.updateUserData(nextProps);
       setTimeout(() => {
-        console.log(this.refs, this.refs.word)
   			this.refs.word.className += ' animated';
   			this.refs.finalCardLayout.classList.remove("hide");
   			this.refs.winText.classList.remove('hide');
@@ -32,13 +29,9 @@ class Anim extends Component {
     }
   }
   updateUserData(props) {
-    console.log(props,'this.props')
     this.props.updateUser(Object.assign({},props.userData.data,{
       time: props.timerValue.time
     }))
-  }
-  componentDidMount() {
-    console.log(this.refs)
   }
   playAgain() {
     window.location.reload();
