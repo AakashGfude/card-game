@@ -69,7 +69,7 @@ class Cards extends Component {
                     <div className="img-back">
                         <div className="back-detail">
                           {(this.state.matched)?
-                            <div className="fuckYea"></div>:
+                            <div className="matched"></div>:
                             <p className="back-name">
                               {this.props.cardvalue}
                             </p>
