@@ -11,7 +11,7 @@ class Anim extends Component {
     if (nextProps.timerValue && nextProps.timerValue.time && nextProps.gameComplete.completed) {
       let Dot = this.refs.Dot;
       Dot.style.background = 'white' //.css('background','white');
-      Dot.style.zIndex = '10';
+      Dot.style.zIndex = '2';
       Dot.style.top = '10px';
       Dot.style.left = '10px';
       Dot.style.zoom = '20';
