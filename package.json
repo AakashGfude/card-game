@@ -17,9 +17,6 @@
   "bugs": {
     "url": "https://github.com/AakashGfude/card-game/issues"
   },
-  "engines" :{
-    "node": "7.10.1"
-  },
   "homepage": "https://github.com/AakashGfude/card-game#readme",
   "dependencies": {
     "axios": "^0.16.2",
