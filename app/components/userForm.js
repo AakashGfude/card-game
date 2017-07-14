@@ -42,7 +42,8 @@ class userForm extends Component {
   }
   onFormSubmit(values) {
     this.setState({
-      buttonClass: 'button is-primary is-loading'
+      buttonClass: 'button is-primary is-loading',
+      startNew: true
     })
     this.props.createUser(values);
   }
