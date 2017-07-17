@@ -13,16 +13,17 @@ class ScoreCardContainer extends Component {
     }
     this.searchPlayer = this.searchPlayer.bind(this);
     this.filterData = this.filterData.bind(this);
-    this.addImageParam = this.addImageParam.bind(this);
+    this.addImageAndNameParam = this.addImageAndNameParam.bind(this);
   }
   componentWillMount() {
     this.props.fetchUsers();
   }
   componentDidUpdate() {
   }
-  addImageParam(user,props) {
+  addImageAndNameParam(user,props) {
     for(let value of props.fetchMarvel.data) {
       if (value.name === user.characterDropdown) {
+        user.characterName = value.name;
         user.image = `${value.thumbnail.path}.${value.thumbnail.extension}`
       }
     }
@@ -33,7 +34,7 @@ class ScoreCardContainer extends Component {
       this.filterData(this.props);
     } else {
       let fillteredArray = _.sortBy(this.props.userList.data.map((user) => {
-          return this.addImageParam(user,this.props);
+          return this.addImageAndNameParam(user,this.props);
         }).filter((user) => {
           if (user.username && user.time && user.username.toLowerCase().indexOf(event.target.value.toLowerCase()) >= 0) {
             return user;
@@ -47,7 +48,7 @@ class ScoreCardContainer extends Component {
   filterData(newProps) {
     this.setState({
         characterList: _.sortBy(newProps.userList.data.map((user) => {
-        return this.addImageParam(user,newProps);
+        return this.addImageAndNameParam(user,newProps);
       }).filter((user) => {
         return (user.time !== 0)
       }),'time',n => {
@@ -77,7 +78,7 @@ class ScoreCardContainer extends Component {
         <div className="user-list">
           { this.state.characterList && this.state.characterList.map((score) => {
                 return (
-                  <ScoreCard key={score._id} name={score.username} image={score.image} time={score.time}/>
+                  <ScoreCard key={score._id} name={score.username} characterName={score.characterName} image={score.image} time={score.time}/>
                 )
             })
           }

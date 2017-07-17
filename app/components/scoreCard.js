@@ -11,7 +11,9 @@ export default class ScoreCard extends Component{
     return (
       <a className="panel-block">
         <span className="panel-icon">
-          <div className="character-pic" style={divStyle}></div>
+          <span className="tooltip-toggle character-pic" aria-label={this.props.characterName} tabIndex="0">
+            <div className="character-pic" style={divStyle}></div>
+          </span>
         </span>
         <div>
           <p className="title">
