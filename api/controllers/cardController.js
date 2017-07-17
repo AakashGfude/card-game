@@ -46,9 +46,9 @@ exports.call_marvel = function(req, res) {
   api('characters?orderBy=modified', {
     publicKey: '9ec9bd8ca1f31c504076c047bafac705',
     privateKey: '657b1d20bc1439c03ad5e5b3f0f3bf215f39a418',
-    timeout: 4000,
+    timeout: 6000,
     query: {
-      limit: 50
+      limit: 100
     }
   }, function (err, body) {
     if (err) throw err

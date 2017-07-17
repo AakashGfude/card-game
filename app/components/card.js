@@ -28,6 +28,7 @@ class Cards extends Component {
 
   // this function executes every time, cardContainer prop is fetched from reducer, which contains first and second cards i.e whenever the card is clicked
   componentWillReceiveProps(newProps) {
+    console.log(newProps);
     // this condition flips card which are being clicked
     if(newProps.cardContainer.firstCard.index !== undefined && (newProps.cardContainer.firstCard.index === this.props.cardIndex || newProps.cardContainer.secondCard.index === this.props.cardIndex)) {
       this.props.selectCard(this.cardClicked(newProps));

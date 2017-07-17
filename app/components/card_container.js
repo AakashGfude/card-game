@@ -9,7 +9,8 @@ class cardContainer extends Component {
     this.cardIndexes = {};
     this.state = {
       cardIndexes: [],
-      gameComplete: false
+      gameComplete: false,
+      noOfCards: 12
     }
     this.propagateGameCompletionStatus = this.propagateGameCompletionStatus.bind(this);
   }
@@ -31,56 +32,60 @@ class cardContainer extends Component {
 
     // these lines of code are to set the firstCard , sencondCard, and a new firstCard after a draw respectively
     if (this.cardIndexes.firstCard === undefined) {
-      this.cardIndexes.firstCard = this.state.cardIndexes[index];
+      this.cardIndexes.firstCard = this.state.cardIndexes[index].value;
       this.cardIndexes.firstCardIndex = index;
     } else if (this.cardIndexes.secondCard === undefined && this.cardIndexes.firstCardIndex != index) {
-      this.cardIndexes.secondCard = this.state.cardIndexes[index];
+      this.cardIndexes.secondCard = this.state.cardIndexes[index].value;
       this.cardIndexes.secondCardIndex = index;
     } else if (this.cardIndexes.firstCard !== undefined && this.cardIndexes.secondCard !== undefined) {
         this.cardIndexes = {
-          firstCard: this.state.cardIndexes[index],
+          firstCard: this.state.cardIndexes[index].value,
           firstCardIndex: index,
           secondCard: undefined,
           secondCardIndex: undefined
         }
     }
+    console.log(this.cardIndexes)
     return this.cardIndexes;
   }
 
   //this function is used to arrange numbers randomly in the backside of the cards
   arrangeNumbers(cardIndexes,boxnumber) {
+    let j=0;
   	while (cardIndexes.length<boxnumber) {
   		var isfilled = 0;
   		var rand = Math.floor(Math.random()*(boxnumber/2));
   		if (cardIndexes.length) {
   			for (var i=0; i<cardIndexes.length;i++) {
-  				if (rand == cardIndexes[i]) {
+  				if (rand == cardIndexes[i].value) {
   					isfilled++;
   				}
   			}
   		}
   		if (isfilled<2) {
-  			cardIndexes.push(rand);
+  			cardIndexes.push({id:j,value:rand});
   		}
+      j++;
   	}
+    console.log(cardIndexes);
     return cardIndexes;
   }
 
   propagateGameCompletionStatus(nextProps) {
     let noOfMatches = 0;
-    for (var i=0; i<nextProps.cardList.length; i++) {
+    for (var i=0; i<this.state.cardIndexes.length; i++) {
       if (nextProps.card[i].matched) {
         noOfMatches++;
       }
     }
-    if (noOfMatches === nextProps.cardList.length) {
+    if (noOfMatches === this.state.cardIndexes.length) {
       this.setState({gameComplete: true},()=> this.props.gameComplete({completed: true}))
     }
   }
 
   componentWillReceiveProps(nextProps) {
     // check if game is completed or not
-    if (nextProps.card && Object.keys(nextProps.card).length >= nextProps.cardList.length && !this.state.gameComplete) {
+    if (nextProps.card && Object.keys(nextProps.card).length >= this.state.cardIndexes.length && !this.state.gameComplete) {
       this.propagateGameCompletionStatus(nextProps);
     }
   }
@@ -88,19 +93,19 @@ class cardContainer extends Component {
   componentDidMount() {
     // once the component mounts add the randomly arranged numbers in the cardIndexes state to render them
     this.setState({
-      cardIndexes: this.arrangeNumbers(this.state.cardIndexes,this.props.cardList.length)
+      cardIndexes: this.arrangeNumbers(this.state.cardIndexes,this.state.noOfCards)
     })
   }
   render() {
     return (
       <div>
         <div className="columns is-multiline">
-        { this.props.cardList.map( (card,index) => {
+        { this.state.cardIndexes.map( (card,index) => {
           return (
-          <div key={card.img} className="column is-3" onClick={() => {
+          <div key={card.id} className="column is-3" onClick={() => {
              this.props.cardContainerClicked(this.setCardsClicked(index))
         }}>
-            <Card cardvalue={this.state.cardIndexes[index]} cardIndex={index}/>
+            <Card cardvalue={card.value} cardIndex={index}/>
           </div>
         )
         })}
@@ -112,8 +117,7 @@ class cardContainer extends Component {
 
 function mapStatetoProps(state) {
   return {
-    cardList: state.cardList,
-    card: state.card,
+    card: state.card
   }
 }
 

@@ -9,7 +9,12 @@
   width: 700px;
 }
 
-//The good stuff
+.game-tooltip {
+  &::before {
+    width: 500px;
+  }
+}
+
 .tooltip-toggle {
   cursor: pointer;
   position: relative;
@@ -26,7 +31,6 @@
     padding: 1rem;
     text-transform: none;
     transition: all 0.5s ease;
-    width: 500px;
   }
 
   //Tooltip arrow

@@ -40,6 +40,7 @@ export function cardReducer(state = {},action) {
 }
 
 export function cardContainerReducer(state = { firstCard: {}, secondCard: {}},action) {
+  console.log(action.payload)
   switch (action.type) {
     case 'CARD_CONTAINER':
       return Object.assign({},state, {
@@ -49,7 +50,7 @@ export function cardContainerReducer(state = { firstCard: {}, secondCard: {}},ac
         },
         secondCard: {
           index: action.payload.secondCardIndex,
-          value: action.payload.secondCard,
+          value: action.payload.secondCard
         }
       })
   }

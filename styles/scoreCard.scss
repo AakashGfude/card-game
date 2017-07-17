@@ -49,3 +49,12 @@ a.panel-block:hover {
   background-color: inherit;
   cursor: auto;
 }
+
+.character-pic {
+  &::before {
+    min-width: 250px;
+    left: 30px !important;
+    top: 0px !important;
+    z-index: 2;
+  }
+}
