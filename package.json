@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "nodemon server.js",
+    "start:server": "node server.js",
+    "nodemon": "nodemon server.js",
     "webpack:build-dev": "webpack --env=dev",
     "webpack:build-prod": "webpack --env=prod",
     "webpack:serve-dev": "webpack-dev-server --env=dev",
