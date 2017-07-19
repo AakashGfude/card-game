@@ -1,1 +1,1 @@
-web: yarn run webpack:build-prod && yarn run start:server
+web: yarn run webpack:build-prod && node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js
