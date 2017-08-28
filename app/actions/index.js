@@ -1,5 +1,7 @@
 import axios from 'axios';
 let ROOT_URL = 'https://card-game-memory.herokuapp.com';
+let GIPHY_API_KEY = '75d022ef8bf7457697b683740398b61e';
+
 if (process.env.NODE_ENV === 'dev') {
   ROOT_URL = 'http://localhost:8080';
 }
@@ -92,5 +94,18 @@ export function passTimerValue(obj) {
   return {
     type: 'TIMER_VALUE',
     payload: obj
+  }
+}
+
+export function giphy(searchterm) {
+  const request = axios.get(`https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${searchterm}&limit=16`);
+    
+  return (dispatch) => {
+    request.then((data) => {
+      dispatch({
+        type: 'GIF_API',
+        payload: data.data.data    
+      })
+    })
   }
 }

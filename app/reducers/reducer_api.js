@@ -42,3 +42,22 @@ export function fetchMarvelReducer(state = null,action) {
   }
   return state;
 }
+
+export function giphyReducer(state = null,action) {
+    console.log(action.payload)
+  switch (action.type) {
+      case 'GIF_API':
+        let newArray = action.payload.map(({ images,slug,id }) => {
+           return {
+             url: images.downsized.url,
+             slug,
+             id
+           }
+        });
+        console.log(newArray);
+        return Object.assign({}, state, {
+          data: newArray
+        })
+  }
+  return state;
+}

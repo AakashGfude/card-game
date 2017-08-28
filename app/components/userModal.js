@@ -12,6 +12,7 @@ class userModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // checks if we have filled the form and submitted, in which case it will hide the form
     if (nextProps.userCreated != this.props.userCreated) {
       setTimeout(()=> {
         this.setState({

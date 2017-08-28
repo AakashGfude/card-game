@@ -90,12 +90,14 @@ class cardContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    // once the component mounts add the randomly arranged numbers in the cardIndexes state to render them
+  componentWillMount() {
+    //before the component mounts add the randomly arranged numbers in the cardIndexes state to render them
     this.setState({
       cardIndexes: this.arrangeNumbers(this.state.cardIndexes,this.state.noOfCards)
-    })
+    });
+    
   }
+    
   render() {
     return (
       <div>
@@ -105,7 +107,7 @@ class cardContainer extends Component {
           <div key={card.id} className="column is-3" onClick={() => {
              this.props.cardContainerClicked(this.setCardsClicked(index))
         }}>
-            <Card cardvalue={card.value} cardIndex={index}/>
+            <Card cardvalue={card.value} cardIndex={index} />
           </div>
         )
         })}
